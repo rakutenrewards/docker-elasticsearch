@@ -7,9 +7,9 @@ This image uses [search-guard](https://github.com/floragunncom/search-guard) ins
 
 This solution focuses on running a dockerized version of elasticsearch in the Google Compute Engine.
 It has the following preinstalled and preconfigured plugins:
-** SearchGuard 
-** Xpack
-** Gce Discovery
+* SearchGuard 
+* Xpack
+* Gce Discovery
 
 # How To Use
 
