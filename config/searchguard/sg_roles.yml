@@ -1,0 +1,82 @@
+admin:
+  cluster:
+    - ALL
+  indices:
+    "*":
+      "*":
+        - ALL
+
+kibana_user:
+  cluster:
+    - MONITOR
+    - CRUD
+  indices:
+    '?kibana':
+      '*':
+        - INDEX_ALL
+        - READ
+
+beats_user:
+  cluster:
+    - ES_INPUT
+  indices:
+    "*beat-*":
+      "*":
+        - INDEX_OWNER
+
+logstash_user:
+  cluster:
+    - ES_INPUT
+  indices:
+    'logstash-*':
+      '*':
+        - INDEX_OWNER
+
+read_only:
+  indices:
+    '*':
+      '*':
+        - READ
+
+
+# Allows adding and modifying repositories
+# and creating and restoring snapshots
+manage_snapshots:
+  cluster:
+    - MANAGE_SNAPSHOTS
+  indices:
+    '*':
+      '*':
+        - WRITE
+        - CREATE
+
+# Make xpack monitoring work
+monitoring_user:
+  cluster:
+  - ES_INPUT
+  indices:
+    '*':
+      '*':
+        - INDEX_ALL
+
+# Make xpack watcher work
+
+alerting:
+  cluster:
+    - indices:data/read/scroll
+    - cluster:admin/xpack/watcher*
+    - cluster:monitor/xpack/watcher*
+  indices:
+    '?watches*':
+      '*':
+        - INDEX_ALL
+    '?watcher-history-*':
+      '*':
+        - INDEX_ALL
+    '?triggered_watches':
+      '*':
+        - INDEX_ALL
+    '*':
+      '*':
+        - READ
+        - indices:admin/aliases/get

@@ -1,0 +1,25 @@
+#dont remove the #hashtages next to the changeme , its will break the password generator
+elastic:
+  hash: changeme #elastic
+  roles:
+    - admin
+
+kibana:
+  hash: changeme #kibana
+  roles:
+    - kibana_user
+
+logstash:
+  hash: changeme #logstash
+  roles:
+    - logstash_user
+
+beats:
+  hash: changeme #beats
+  roles:
+    - beats_user
+
+monitoring:
+  hash: changeme #monitoring
+  roles:
+    - monitoring_user
