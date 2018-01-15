@@ -13,10 +13,11 @@ It has the following preinstalled and preconfigured plugins:
 
 # How To Use
 
-Configure it for your needs through the `gce.env` file. 
-Make sure you have `gcloud` installed and configured and look up the suppored build options in the `Makefile`
+Configure it for your needs through the `gce.env` file. Make sure you have an environment variable `PROJECT_ID` defined with your google project ID.
 
-default target would build, push and create a cluster in your project.
+Make sure you have `gcloud` installed and configured. Look up the suppored build options in the `Makefile`
+
+The `default` target would build the docker image, push it to your `gcr.io` and create a cluster in your project.
 
 The build process will create the `elastic.env` which will have all the user passwords and environment variables provided to the cluster.
 
