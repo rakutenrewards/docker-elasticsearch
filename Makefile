@@ -18,4 +18,4 @@ create_template:
 create_instances:
 	./cluster-up.sh $(IMAGE_NAME)
 
-build_deploy: image_build image_push create_template
+build_deploy: image_build image_push create_instances

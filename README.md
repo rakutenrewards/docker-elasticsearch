@@ -11,10 +11,14 @@ It has the following preinstalled and preconfigured plugins:
 ** Xpack
 ** Gce Discovery
 
+# How To Use
+
 Configure it for your needs through the `gce.env` file. 
 Make sure you have `gcloud` installed and configured and look up the suppored build options in the `Makefile`
 
-# How To Use
+default target would build, push and create a cluster in your project.
+
+The build process will create the `elastic.env` which will have all the user passwords and environment variables provided to the cluster.
 
 # Environment Variables
 
