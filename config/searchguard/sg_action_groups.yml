@@ -34,6 +34,7 @@ MONITOR:
   - "cluster:monitor/*"
   - "cluster:admin/ingest/*"
   - "cluster:admin/xpack/watcher*"
+  - "cluster:admin/xpack/monitoring*"
 
 #SNAPSHOTS
 MANAGE_SNAPSHOTS:
