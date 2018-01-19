@@ -33,6 +33,7 @@ beats_user:
 monitoring_user:
     backendroles:
         - monitoring_user
+        - alerting
     host:
         - "*"
     users:

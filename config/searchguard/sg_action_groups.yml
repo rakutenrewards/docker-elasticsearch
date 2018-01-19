@@ -27,14 +27,15 @@ TEMPLATE_OWNER:
 ES_INPUT:
   - TEMPLATE_OWNER
   - WRITE
-  - MONITOR
 
 # MONITORING
 MONITOR:
   - "cluster:monitor/*"
   - "cluster:admin/ingest/*"
-  - "cluster:admin/xpack/watcher*"
-  - "cluster:admin/xpack/monitoring*"
+  - "cluster:admin/xpack/*"
+  - "indices:data/read/mget*"
+  - "indices:data/read/msearch*"
+  
 
 #SNAPSHOTS
 MANAGE_SNAPSHOTS:

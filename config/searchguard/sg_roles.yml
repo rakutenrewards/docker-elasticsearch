@@ -2,16 +2,17 @@ admin:
   cluster:
     - ALL
   indices:
-    "*":
-      "*":
+    '*':
+      '*':
         - ALL
 
 kibana_user:
   cluster:
     - MONITOR
     - CRUD
+    - PUT_TEMPLATE
   indices:
-    '?kibana':
+    '*':
       '*':
         - INDEX_ALL
         - READ
@@ -38,7 +39,6 @@ read_only:
       '*':
         - READ
 
-
 # Allows adding and modifying repositories
 # and creating and restoring snapshots
 manage_snapshots:
@@ -54,6 +54,7 @@ manage_snapshots:
 monitoring_user:
   cluster:
   - ES_INPUT
+  - MONITOR
   indices:
     '*':
       '*':

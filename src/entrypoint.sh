@@ -13,6 +13,7 @@ cat /elasticsearch/config/elasticsearch.yml
 export CA_PWD=$(cat /.ca_pwd)
 export TS_PWD=$(cat /.ts_pwd)
 export KS_PWD=$(cat /.ks_pwd)
+export ES_JAVA_OPTS="-Xms$HEAP_SIZE -Xmx$HEAP_SIZE"
 
 if [ "$NODE_NAME" = "" ]; then
 	export NODE_NAME=NODE-$HOSTNAME
@@ -27,7 +28,6 @@ chown -R elasticsearch:elasticsearch /elasticsearch
 
 
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
-	export ES_JAVA_OPTS="-Des.logger.level=$LOG_LEVEL -Xms$HEAP_SIZE -Xmx$HEAP_SIZE"
   exec chroot --userspec=1000 / "$@" &
 else
 	$@ &

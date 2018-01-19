@@ -53,8 +53,9 @@ RUN cd /tmp \
   done \
   && rm -rf /tmp/* \
   && rm /elasticsearch/config/elasticsearch.yml \
+  && rm /elasticsearch/config/jvm.options \
+  && rm /elasticsearch/config/log4j2.properties \
   && yum clean all
-
 
 RUN  mkdir -p /.backup/elasticsearch/
 COPY config /.backup/elasticsearch/config
@@ -88,9 +89,9 @@ RUN openssl rand -hex 16 > /.ts_pwd
 RUN openssl rand -hex 16 > /.ks_pwd
 
 COPY ./src/ /run/
+
 RUN chmod +x -R /run/
 RUN /run/auth/certificates/gen_all.sh
-
 
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]
