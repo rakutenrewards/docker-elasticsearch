@@ -1,3 +1,7 @@
+# Supported Elasticsearch versions
+
+* `6.1.1`
+
 # What is elasticsearch?
 
 Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data so you can discover the expected and uncover the unexpected.
@@ -14,6 +18,7 @@ It has the following preinstalled and preconfigured plugins:
 # How To Use
 
 Configure it for your needs through the `gce.env` file. Make sure you have an environment variable `PROJECT_ID` defined with your google project ID.
+
 
 Make sure you have `gcloud` installed and configured. Look up the suppored build options in the `Makefile`
 
