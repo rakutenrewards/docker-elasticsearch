@@ -10,10 +10,13 @@ image_build:
 	docker build -t $(IMAGE_NAME) .
 
 image_push:
-	gcloud docker --project $(PROJECT_ID) -- push $(IMAGE_NAME)
+	docker push $(IMAGE_NAME)
+
+create_network:
+	./create-network.sh
 
 create_template:
-	./cluster-template.sh $(IMAGE_NAME) 
+	./cluster-template.sh $(IMAGE_NAME)
 
 create_instances:
 	./cluster-up.sh $(IMAGE_NAME)

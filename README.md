@@ -11,14 +11,15 @@ This image uses [search-guard](https://github.com/floragunncom/search-guard) ins
 
 This solution focuses on running a dockerized version of elasticsearch in the Google Compute Engine.
 It has the following preinstalled and preconfigured plugins:
-* SearchGuard 
+* SearchGuard
 * Xpack
 * Gce Discovery
+* Gce Repository
 
 # How To Use
+Configure `docker` to be able to push `gcr.io` with ` gcloud auth configure-docker`
 
-Configure it for your needs through the `gce.env` file. Make sure you have an environment variable `PROJECT_ID` defined with your google project ID.
-
+Create a `gce.env` file. (there is a `gce.env.sample` as an example) Make sure you have an environment variable `PROJECT_ID` defined with your google project ID.
 
 Make sure you have `gcloud` installed and configured. Look up the suppored build options in the `Makefile`
 
