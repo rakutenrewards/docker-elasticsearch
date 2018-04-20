@@ -1,9 +1,11 @@
 
-PROJECT_ID ?= dev
+PROJECT_ID ?= id
+CLOUD_PROVIDER ?= gce
+DOCKER_REPOSITORY ?= gcr.io
 
-IMAGE_NAME = gcr.io/$(PROJECT_ID)/es-6-sg:latest
+IMAGE_NAME = $(DOCKER_REPOSITORY)/$(PROJECT_ID)/es-6-sg:latest
 
-default: build_deploy
+default: deploy
 
 image_build:
 	echo Building $(IMAGE_NAME)
@@ -13,12 +15,10 @@ image_push:
 	docker push $(IMAGE_NAME)
 
 create_network:
-	./create-network.sh
+	cd $(CLOUD_PROVIDER);./create-network.sh
 
-create_template:
-	./cluster-template.sh $(IMAGE_NAME)
+create_cluster:
+	cd $(CLOUD_PROVIDER);./create-cluster.sh $(IMAGE_NAME)
 
-create_instances:
-	./cluster-up.sh $(IMAGE_NAME)
 
-build_deploy: image_build image_push create_instances
+deploy: image_build image_push create_network create_cluster

@@ -1,2 +1,2 @@
 elastic.env
-gce.env
+gce/gce.env
