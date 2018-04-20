@@ -107,4 +107,4 @@ Configuration file is located in `/etc/elasticsearch/elasticsearch.yml` if you f
 
 # User Feedback
 ## Issues
-If you have any problems with or questions about this image, please ask for help through a [GitHub issue](https://github.com/romankor/docker-elasticsearch/issues).
+If you have any problems with or questions about this image, please ask for help through a [GitHub issue](https://github.com/ebates-inc/docker-elasticsearch/issues).
