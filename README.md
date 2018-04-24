@@ -1,20 +1,15 @@
-# Supported Elasticsearch versions
+This project focuses on running a fully preconfigured, dockerized version of ElasticSearch on various cloud providers. Current supported platforms are  [GCE](https://cloud.google.com/compute) , but [AWS](https://aws.amazon.com/) is in the works.
+
+The custom configuration includes:
+* [SearchGuard](https://search-guard.com/) (Security, SSL transport/http layer, User Role Management)
+* [Xpack](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html) (Monitoring)
+* [GCE Discovery](https://www.elastic.co/guide/en/elasticsearch/plugins/6.2/discovery-gce.html)
+* [GCS Repository](https://www.elastic.co/guide/en/elasticsearch/plugins/master/repository-gcs.html)
+
+
+# Supported ElasticSearch versions
 
 * `6.1.1`
-
-# What is elasticsearch?
-
-Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data so you can discover the expected and uncover the unexpected.
-This image uses [search-guard](https://github.com/floragunncom/search-guard) instead of shield to handle trusted users.
-
-[<img src="https://static-www.elastic.co/fr/assets/blt9a26f88bfbd20eb5/icon-elasticsearch-bb.svg?q=802" width="144" height="144">](https://www.elastic.co/fr/products/elasticsearch)
-
-This solution focuses on running a dockerized version of elasticsearch in the Google Compute Engine.
-It has the following preinstalled and preconfigured plugins:
-* [SearchGuard](https://search-guard.com/)
-* [Xpack](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html)
-* [Gce Discovery](https://www.elastic.co/guide/en/elasticsearch/plugins/6.2/discovery-gce.html)
-* [Gce Repository](https://www.elastic.co/guide/en/elasticsearch/plugins/master/repository-gcs.html)
 
 # How To Use
 Configure `docker` to be able to push `gcr.io` with ` gcloud auth configure-docker`

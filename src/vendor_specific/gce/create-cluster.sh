@@ -12,7 +12,7 @@ gcloud beta compute instance-templates create-with-container $TEMPLATE_NAME \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-data,mount-path=/elasticsearch/data \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-logs,mount-path=/elasticsearch/logs \
 --container-env-file=elastic.env \
---metadata-from-file startup-script=../instance-startup.sh \
+--metadata-from-file startup-script=instance-startup.sh \
 --project=$PROJECT_ID
 
 echo Creating Instance Group

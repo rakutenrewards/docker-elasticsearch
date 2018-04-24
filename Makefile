@@ -1,6 +1,6 @@
 
 PROJECT_ID ?= id
-CLOUD_PROVIDER ?= gce
+CLOUD_PROVIDER ?= src/vendor_specific/gce
 DOCKER_REPOSITORY ?= gcr.io
 
 IMAGE_NAME = $(DOCKER_REPOSITORY)/$(PROJECT_ID)/es-6-sg:latest
