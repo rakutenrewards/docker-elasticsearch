@@ -9,6 +9,8 @@ KIBANA_PWD=$(openssl rand -hex 16)
 LOGSTASH_PWD=$(openssl rand -hex 16)
 BEATS_PWD=$(openssl rand -hex 16)
 MONITORING_PWD=$(openssl rand -hex 16)
+APP_PWD=$(openssl rand -hex 16)
+READER_PWD=$(openssl rand -hex 16)
 " > elastic.env
 
 cat gce.env >> elastic.env

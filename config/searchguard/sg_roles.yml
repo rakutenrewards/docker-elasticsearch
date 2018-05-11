@@ -15,7 +15,6 @@ kibana_user:
     '*':
       '*':
         - INDEX_ALL
-        - READ
 
 beats_user:
   cluster:
@@ -34,11 +33,21 @@ logstash_user:
       '*':
         - INDEX_OWNER
 
-read_only:
+reader_user:
+  cluster:
+    - MONITOR
   indices:
     '*':
       '*':
         - READ
+
+app_user:
+  cluster:
+    - MONITOR
+  indices:
+    '*':
+      '*':
+        - INDEX_ALL
 
 # Allows adding and modifying repositories
 # and creating and restoring snapshots
