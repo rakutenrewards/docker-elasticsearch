@@ -14,6 +14,14 @@ kibana_user:
     users:
         - kibana
 
+read_only_user:
+    backendroles:
+        - read_only_user
+    host:
+        - "*"
+    users:
+        - read_only
+
 logstash_user:
     backendroles:
         - logstash_user
@@ -46,3 +54,19 @@ manage_snapshots:
         - "*"
     users:
         - elastic
+
+reader_user:
+    backendroles:
+        - reader_user
+    host:
+        - "*"
+    users:
+        - reader
+
+app_user:
+    backendroles:
+        - app_user
+    host:
+        - "*"
+    users:
+        - app

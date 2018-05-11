@@ -68,4 +68,4 @@ searchguard:
     authcz.admin_dn:
       - "CN=elastic ,OU=devops, C=COM"
     enable_snapshot_restore_privilege: true
-    enterprise_modules_enabled: false
+    enterprise_modules_enabled: ${ENTERPRISE_ENABLED} 

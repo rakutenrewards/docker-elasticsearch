@@ -1,13 +1,15 @@
 FROM centos:7
 
+ARG ES_VERSION
+ARG SG_VERSION
+
 MAINTAINER Roman Kournjaev <kournjaev@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard xpack gce gcs"
 
-ENV ES_VERSION 6.1.1
-ENV SG_VERSION "20.1"
 ENV DOWNLOAD_URL "https://artifacts.elastic.co/downloads/elasticsearch"
 ENV ES_TARBAL "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz"
 ENV ES_TARBALL_ASC "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz.asc"
+# the fingerprint is the same for every version
 ENV GPG_KEY "46095ACC8548582C1A2699A9D27D666CD88E42B4"
 ENV PATH /elasticsearch/bin:$PATH
 

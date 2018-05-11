@@ -15,5 +15,11 @@ sed -ri "s|hash:[^\r\n#]*#beats|hash: '$hash' #beats|" /elasticsearch/config/sea
 hash=$(/elasticsearch/plugins/search-guard-6/tools/hash.sh -p $MONITORING_PWD)
 sed -ri "s|hash:[^\r\n#]*#monitoring|hash: '$hash' #monitoring|" /elasticsearch/config/searchguard/sg_internal_users.yml
 
+hash=$(/elasticsearch/plugins/search-guard-6/tools/hash.sh -p $READER_PWD)
+sed -ri "s|hash:[^\r\n#]*#reader|hash: '$hash' #reader|" /elasticsearch/config/searchguard/sg_internal_users.yml
+
+hash=$(/elasticsearch/plugins/search-guard-6/tools/hash.sh -p $APP_PWD)
+sed -ri "s|hash:[^\r\n#]*#app|hash: '$hash' #app|" /elasticsearch/config/searchguard/sg_internal_users.yml
+
 
 cat /elasticsearch/config/searchguard/sg_internal_users.yml
