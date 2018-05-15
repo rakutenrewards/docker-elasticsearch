@@ -9,7 +9,7 @@ The custom configuration includes:
 
 # Supported ElasticSearch versions
 
-* `6.1.1`
+* `6.1.0 -> 6.2.4`
 
 # How To Use
 Configure `docker` to be able to push `gcr.io` with ` gcloud auth configure-docker`
