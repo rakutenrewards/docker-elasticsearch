@@ -33,9 +33,9 @@ MONITOR:
   - "cluster:monitor/*"
   - "cluster:admin/ingest/*"
   - "cluster:admin/xpack/*"
-  - "indices:data/read/mget*"
-  - "indices:data/read/msearch*"
-  
+  - "indices:data/read/*"
+  - "indices:data/write/bulk"
+
 
 #SNAPSHOTS
 MANAGE_SNAPSHOTS:
