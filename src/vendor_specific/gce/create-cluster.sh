@@ -1,14 +1,22 @@
 #!/bin/bash
 IMAGE_NAME=$1
+GENERATE_PASSWORDS=${2:true}
 
 source ./prepare_env.sh
 
 echo Creating Template with name $TEMPLATE_NAME
 
+if [ -z "$SUBNET" ]
+then
+  SUBNET_COMMAND=""
+else
+  SUBNET_COMMAND="--subnet=$SUBNET"
+fi
+
 gcloud beta compute instance-templates create-with-container $TEMPLATE_NAME \
 --tags=$TAGS --container-image=$IMAGE_NAME --machine-type=$INSTANCE_TYPE \
 --no-boot-disk-auto-delete --boot-disk-size=$DISK_SIZE --boot-disk-type=pd-ssd \
---scopes=$SCOPES --network=$NETWORK  \
+--scopes=$SCOPES --network=$NETWORK  $SUBNET_COMMAND \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-data,mount-path=/elasticsearch/data \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-logs,mount-path=/elasticsearch/logs \
 --container-env-file=elastic.env \

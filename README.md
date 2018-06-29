@@ -68,6 +68,11 @@ Keystore(private key storage) password.
 
 Configuration file is located in `/config/elasticsearch.yml`
 
+# Provide Custom passwords
+
+You can provide your own passwords instance of the onces being generated. Set the env variable `GENERATE_PASSWORDS` to `false` and provide a /src/passwords file ( look at src/passwords.example )
+
+
 # User Feedback
 ## Issues
 If you have any problems with or questions about this image, please ask for help through a [GitHub issue](https://github.com/ebates-inc/docker-elasticsearch/issues).

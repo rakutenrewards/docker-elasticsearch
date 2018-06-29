@@ -4,6 +4,7 @@ SG_VERSION = $(shell cat es-versions.json | jq '.["$(ES_VERSION)"]')
 PROJECT_ID ?= id
 CLOUD_PROVIDER ?= src/vendor_specific/gce
 DOCKER_REPOSITORY ?= gcr.io
+GENERATE_PASSWORDS ?= true
 
 IMAGE_NAME = $(DOCKER_REPOSITORY)/$(PROJECT_ID)/es-6-sg:$(ES_VERSION)
 
@@ -20,7 +21,7 @@ create_network:
 	cd $(CLOUD_PROVIDER);./create-network.sh
 
 create_cluster:
-	cd $(CLOUD_PROVIDER);./create-cluster.sh $(IMAGE_NAME)
+	cd $(CLOUD_PROVIDER);./create-cluster.sh $(IMAGE_NAME) $(GENERATE_PASSWORDS)
 
 
 deploy: image_build image_push create_network create_cluster

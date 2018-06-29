@@ -59,6 +59,7 @@ RUN cd /tmp \
   && rm /elasticsearch/config/log4j2.properties \
   && yum clean all
 
+
 RUN  mkdir -p /.backup/elasticsearch/
 COPY config /.backup/elasticsearch/config
 
@@ -94,6 +95,7 @@ COPY ./src/ /run/
 
 RUN chmod +x -R /run/
 RUN /run/auth/certificates/gen_all.sh
+
 
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]

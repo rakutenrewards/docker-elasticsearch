@@ -4,7 +4,7 @@ source ./prepare_env.sh
 echo Creating Network $NETWORK
 gcloud compute networks create $NETWORK --project=$PROJECT_ID
 
-echo Filerwall rules
+echo Firerwall rules
 gcloud compute firewall-rules create $NETWORK-allow-intracluster \
 --source-tags $TAGS --target-tags $TAGS --allow tcp:1-65535 \
 --network $NETWORK --project=$PROJECT_ID
