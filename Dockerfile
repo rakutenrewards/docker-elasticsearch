@@ -45,14 +45,8 @@ RUN cd /tmp \
   && echo "===> Installing x-pack..." \
   && /elasticsearch/bin/elasticsearch-plugin install x-pack \
   && echo "===> Creating Elasticsearch Paths..." \
-  && for path in \
-  	/elasticsearch/config \
-  	/elasticsearch/config/scripts \
-  	/elasticsearch/plugins \
-  ; do \
-  mkdir -p "$path"; \
-  chown -R elasticsearch:elasticsearch "$path"; \
-  done \
+  && mkdir -p /elasticsearch/config/scripts /elasticsearch/plugins \
+  && chown -R elasticsearch:elasticsearch /elasticsearch/config /elasticsearch/plugins \
   && rm -rf /tmp/* \
   && rm /elasticsearch/config/elasticsearch.yml \
   && rm /elasticsearch/config/jvm.options \
