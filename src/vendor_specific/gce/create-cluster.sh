@@ -2,11 +2,17 @@
 IMAGE_NAME=$1
 GENERATE_PASSWORDS=${2:true}
 
+if [[ -z $IMAGE_NAME ]]
+then
+  echo 'Missing env-var IMAGE_NAME'
+  exit 4
+fi
+
 source ./prepare_env.sh "$GENERATE_PASSWORDS"
 
 echo Creating Template with name $TEMPLATE_NAME
 
-if [ -z "$SUBNET" ]
+if [[ -z "$SUBNET" ]]
 then
   SUBNET_COMMAND=""
 else
