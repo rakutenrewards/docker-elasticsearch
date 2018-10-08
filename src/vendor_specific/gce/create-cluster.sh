@@ -2,11 +2,17 @@
 IMAGE_NAME=$1
 GENERATE_PASSWORDS=${2:true}
 
-source ./prepare_env.sh
+if [[ -z $IMAGE_NAME ]]
+then
+  echo 'Missing env-var IMAGE_NAME'
+  exit 4
+fi
+
+source ./prepare_env.sh "$GENERATE_PASSWORDS"
 
 echo Creating Template with name $TEMPLATE_NAME
 
-if [ -z "$SUBNET" ]
+if [[ -z "$SUBNET" ]]
 then
   SUBNET_COMMAND=""
 else
@@ -27,5 +33,5 @@ gcloud compute instance-templates create-with-container $TEMPLATE_NAME \
 echo Creating Instance Group
 
 gcloud compute instance-groups managed create $TEMPLATE_NAME \
---template=$TEMPLATE_NAME --size=$CLUSTER_SIZE --zone=$ZONE \
---project=$PROJECT_ID
+  --template=$TEMPLATE_NAME --size=$CLUSTER_SIZE --zone=$ZONE \
+  --project=$PROJECT_ID
