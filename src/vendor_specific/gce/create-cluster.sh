@@ -13,14 +13,15 @@ else
   SUBNET_COMMAND="--subnet=$SUBNET"
 fi
 
-gcloud beta compute instance-templates create-with-container $TEMPLATE_NAME \
+gcloud compute instance-templates create-with-container $TEMPLATE_NAME \
 --tags=$TAGS --container-image=$IMAGE_NAME --machine-type=$INSTANCE_TYPE \
---no-boot-disk-auto-delete --boot-disk-size=$DISK_SIZE --boot-disk-type=pd-ssd \
+--no-boot-disk-auto-delete --boot-disk-size=$DISK_SIZE \
 --scopes=$SCOPES --network=$NETWORK  $SUBNET_COMMAND \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-data,mount-path=/elasticsearch/data \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-logs,mount-path=/elasticsearch/logs \
 --container-env-file=elastic.env \
 --metadata-from-file startup-script=instance-startup.sh \
+--boot-disk-type=$DISK_TYPE \
 --project=$PROJECT_ID
 
 echo Creating Instance Group
