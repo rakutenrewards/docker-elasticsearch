@@ -19,6 +19,5 @@ else
   $(cat passwords > elastic.env)
 fi
 
-
 cat gce.env >> elastic.env
-echo "PROJECT_ID=$PROJECT_ID" >> elastic.env
+printf "\nPROJECT_ID=$PROJECT_ID" >> elastic.env
