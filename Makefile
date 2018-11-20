@@ -30,5 +30,8 @@ create_network:
 create_cluster:
 	cd $(CLOUD_PROVIDER); ./create-cluster.sh $(IMAGE_NAME) $(GENERATE_PASSWORDS)
 
+create_lb:
+	cd $(CLOUD_PROVIDER); ./create-lb.sh
+
 
 deploy: image_build image_push create_network create_cluster

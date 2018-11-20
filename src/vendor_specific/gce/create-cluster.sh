@@ -12,6 +12,7 @@ source ./prepare_env.sh "$GENERATE_PASSWORDS"
 
 echo Creating Template with name $TEMPLATE_NAME
 
+
 if [[ -z "$SUBNET" ]]
 then
   SUBNET_COMMAND=""
@@ -19,10 +20,17 @@ else
   SUBNET_COMMAND="--subnet=$SUBNET"
 fi
 
+if $EXTERNAL_IP ;
+then
+  EXTERNAL_IP_COMMAND=""
+else
+  EXTERNAL_IP_COMMAND="--no-address"
+fi
+
 gcloud compute instance-templates create-with-container $TEMPLATE_NAME \
 --tags=$TAGS --container-image=$IMAGE_NAME --machine-type=$INSTANCE_TYPE \
 --no-boot-disk-auto-delete --boot-disk-size=$DISK_SIZE \
---scopes=$SCOPES --network=$NETWORK  $SUBNET_COMMAND \
+--scopes=$SCOPES --network=$NETWORK $SUBNET_COMMAND $EXTERNAL_IP_COMMAND \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-data,mount-path=/elasticsearch/data \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-logs,mount-path=/elasticsearch/logs \
 --container-env-file=elastic.env \

@@ -9,8 +9,7 @@ node:
 # comment out when running locally
 network:
   host:
-  - _gce_
-  - _local_
+  - 0.0.0.0
 cloud:
   gce:
     project_id: ${PROJECT_ID}
