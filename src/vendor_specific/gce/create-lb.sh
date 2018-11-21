@@ -6,6 +6,16 @@ HEALTH_CHECK_NAME=$TEMPLATE_NAME"-health-check"
 BACKEND_SERVICE_NAME=$TEMPLATE_NAME"-lb"
 FORWARDING_RULE_NAME=$TEMPLATE_NAME"-forward-rule"
 
+if [ -z "$LB_NETWORK" ]
+then
+    LB_NETWORK=$NETWORK
+fi
+
+if [ -z "$LB_SUBNET" ]
+then
+    LB_SUBNET=$SUBNET
+fu
+
 echo Cleanup
 gcloud --quiet compute forwarding-rules delete $FORWARDING_RULE_NAME \
     --project $PROJECT_ID \
