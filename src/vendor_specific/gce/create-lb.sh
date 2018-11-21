@@ -38,14 +38,14 @@ gcloud compute backend-services add-backend $BACKEND_SERVICE_NAME \
     --region $REGION \
     --instance-group-zone $ZONE
 
-echo Creating forwrding rule with name $FORWARDING_RULE_NAME
+echo Creating forwarding rule with name $FORWARDING_RULE_NAME
 gcloud compute forwarding-rules create $FORWARDING_RULE_NAME \
     --project=$PROJECT_ID \
     --backend-service=$BACKEND_SERVICE_NAME \
     --ip-protocol TCP \
     --load-balancing-scheme INTERNAL \
-    --network $NETWORK \
-    --subnet $SUBNET \
+    --network $LB_NETWORK \
+    --subnet $LB_SUBNET \
     --subnet-region $REGION \
     --backend-service-region $REGION \
     --region $REGION \
