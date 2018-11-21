@@ -14,7 +14,7 @@ fi
 if [ -z "$LB_SUBNET" ]
 then
     LB_SUBNET=$SUBNET
-fu
+fi
 
 echo Cleanup
 gcloud --quiet compute forwarding-rules delete $FORWARDING_RULE_NAME \
