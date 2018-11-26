@@ -39,11 +39,9 @@ RUN cd /tmp \
   && echo "===> Installing search-guard..." \
   && /elasticsearch/bin/elasticsearch-plugin install -b "com.floragunn:search-guard-6:$ES_VERSION-$SG_VERSION" \
   && echo "===> Installing discovery-gce..." \
-  && /elasticsearch/bin/elasticsearch-plugin install discovery-gce \
+  && /elasticsearch/bin/elasticsearch-plugin install -b discovery-gce \
   && echo "===> Installing repository-gcs..." \
-  && /elasticsearch/bin/elasticsearch-plugin install repository-gcs \
-  && echo "===> Installing x-pack..." \
-  && /elasticsearch/bin/elasticsearch-plugin install x-pack \
+  && /elasticsearch/bin/elasticsearch-plugin install -b repository-gcs \
   && echo "===> Creating Elasticsearch Paths..." \
   && mkdir -p /elasticsearch/config/scripts /elasticsearch/plugins \
   && chown -R elasticsearch:elasticsearch /elasticsearch/config /elasticsearch/plugins \
@@ -78,7 +76,7 @@ ENV CLUSTER_NAME="elasticsearch" \
     BEATS_PWD="changeme" \
     MONITORING_PWD="changeme" \
     HEAP_SIZE="1g" \
-		HTTP_SSL=false \
+	HTTP_SSL=false \
     LOG_LEVEL=INFO
 
 RUN openssl rand -hex 16 > /.ca_pwd
