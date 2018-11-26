@@ -76,7 +76,7 @@ ENV CLUSTER_NAME="elasticsearch" \
     BEATS_PWD="changeme" \
     MONITORING_PWD="changeme" \
     HEAP_SIZE="1g" \
-	HTTP_SSL=false \
+    HTTP_SSL=false \
     LOG_LEVEL=INFO
 
 RUN openssl rand -hex 16 > /.ca_pwd
