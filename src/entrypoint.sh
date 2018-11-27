@@ -25,6 +25,13 @@ if [ ! -f .node_crt ] ; then
 fi
 
 chown -R elasticsearch:elasticsearch /elasticsearch
+ 
+
+if [[ !  -z  $GCS_SERVICE_ACCOUNT  ]]; then
+  elasticsearch-keystore create
+  echo $GCS_SERVICE_ACCOUNT | base64 -d > /tmp/gcs.client.default.credentials_file
+  elasticsearch-keystore add-file -f gcs.client.default.credentials_file /tmp/gcs.client.default.credentials_file
+fi
 
 
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then

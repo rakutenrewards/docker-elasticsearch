@@ -3,8 +3,8 @@ FROM centos:7
 ARG ES_VERSION
 ARG SG_VERSION
 
-MAINTAINER Roman Kournjaev <kournjaev@gmail.com>
-LABEL Description="elasticsearch searchguard search-guard xpack gce gcs"
+LABEL mainter="Roman Kournjaev <kournjaev@gmail.com>"
+LABEL description="elasticsearch searchguard search-guard xpack gce gcs"
 
 ENV DOWNLOAD_URL "https://artifacts.elastic.co/downloads/elasticsearch"
 ENV ES_TARBAL "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz"
@@ -87,7 +87,6 @@ COPY ./src/ /run/
 
 RUN chmod +x -R /run/
 RUN /run/auth/certificates/gen_all.sh
-
 
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]
