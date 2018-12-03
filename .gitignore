@@ -2,3 +2,4 @@ elastic.env
 gce.env
 passwords
 .idea
+gce.*.env

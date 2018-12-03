@@ -14,22 +14,7 @@ logstash:
   roles:
     - logstash_user
 
-beats:
-  hash: changeme #beats
-  roles:
-    - beats_user
-
-monitoring:
-  hash: changeme #monitoring
-  roles:
-    - monitoring_user
-
 reader:
   hash: changeme #reader
   roles:
     - reader_user
-
-app:
-  hash: changeme #app
-  roles:
-    - app_user

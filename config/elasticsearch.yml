@@ -37,14 +37,6 @@ xpack.monitoring.enabled: true
 xpack.watcher.enabled: true
 xpack.monitoring.collection.enabled: true
 
-# xpack.monitoring.exporters:
-#   local:
-#     type: http
-#     host: 127.0.0.1:9200
-#     auth.username: monitoring
-#     auth.password: ${MONITORING_PWD}
-
-
 searchguard:
     ssl.transport:
         enabled: true

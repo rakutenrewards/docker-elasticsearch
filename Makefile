@@ -1,4 +1,4 @@
-ES_VERSION ?= 6.4.3
+ES_VERSION ?= 6.5.1
 SG_VERSION = $(shell cat es-versions.json | jq '.["$(ES_VERSION)"]')
 CLOUD_PROVIDER ?= src/vendor_specific/gce
 DOCKER_REPOSITORY ?= gcr.io
@@ -8,6 +8,9 @@ ifndef PROJECT_ID
 $(error Please set PROJECT_ID to the name of GCE project)
 endif
 
+ifeq ($(SG_VERSION), null)
+$(error ES Version $(ES_VERSION) not supported)
+endif
 
 IMAGE_NAME = $(DOCKER_REPOSITORY)/$(PROJECT_ID)/es-6-sg:$(ES_VERSION)
 
