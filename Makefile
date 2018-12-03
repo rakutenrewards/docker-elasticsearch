@@ -1,4 +1,4 @@
-ES_VERSION ?= 6.4.3
+ES_VERSION ?= 6.5.1
 SG_VERSION = $(shell cat es-versions.json | jq '.["$(ES_VERSION)"]')
 CLOUD_PROVIDER ?= src/vendor_specific/gce
 DOCKER_REPOSITORY ?= gcr.io

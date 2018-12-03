@@ -30,22 +30,6 @@ logstash_user:
     users:
         - logstash
 
-beats_user:
-    backendroles:
-        - beats_user
-    host:
-        - "*"
-    users:
-        - beats
-
-monitoring_user:
-    backendroles:
-        - monitoring_user
-        - alerting
-    host:
-        - "*"
-    users:
-        - monitoring
 
 manage_snapshots:
     backendroles:

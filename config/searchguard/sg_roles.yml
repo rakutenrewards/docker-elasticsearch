@@ -28,7 +28,7 @@ logstash_user:
   cluster:
     - MONITOR
     - ES_INPUT
-  indices:
+  indices:  
     'logstash-*':
       '*':
         - INDEX_OWNER
