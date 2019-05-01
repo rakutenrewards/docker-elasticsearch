@@ -1,0 +1,15 @@
+ARG ES_VERSION
+ARG SG_VERSION
+FROM es_builder:${ES_VERSION}_${SG_VERSION}
+
+
+# Install Elasticsearch AWS PART.
+RUN cd /tmp \
+  && echo "===> Install Elasticsearch AWS plugins..." \
+  && echo "===> Installing discovery-ec2..." \
+  && /elasticsearch/bin/elasticsearch-plugin install -b discovery-ec2 \
+  && echo "===> Installing repository-s3..." \
+  && /elasticsearch/bin/elasticsearch-plugin install -b repository-s3 \
+  && yum clean all
+
+

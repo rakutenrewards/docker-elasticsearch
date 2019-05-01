@@ -34,6 +34,7 @@ gcloud compute instance-templates create-with-container $TEMPLATE_NAME \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-data,mount-path=/elasticsearch/data \
 --container-mount-host-path host-path=/mnt/stateful_partition/es-logs,mount-path=/elasticsearch/logs \
 --container-env-file=elastic.env \
+--labels=component=elasticsearch \
 --metadata-from-file startup-script=instance-startup.sh \
 --boot-disk-type=$DISK_TYPE \
 --project=$PROJECT_ID

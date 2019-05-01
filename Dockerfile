@@ -2,6 +2,7 @@ FROM centos:7
 
 ARG ES_VERSION
 ARG SG_VERSION
+ARG CLOUD_PROVIDER
 
 LABEL mainter="Roman Kournjaev <kournjaev@gmail.com>"
 LABEL description="elasticsearch searchguard search-guard xpack gce gcs"
@@ -38,10 +39,6 @@ RUN cd /tmp \
   && adduser -u 1000 -g 1000 -d /elasticsearch elasticsearch \
   && echo "===> Installing search-guard..." \
   && /elasticsearch/bin/elasticsearch-plugin install -b "com.floragunn:search-guard-6:$ES_VERSION-$SG_VERSION" \
-  && echo "===> Installing discovery-gce..." \
-  && /elasticsearch/bin/elasticsearch-plugin install -b discovery-gce \
-  && echo "===> Installing repository-gcs..." \
-  && /elasticsearch/bin/elasticsearch-plugin install -b repository-gcs \
   && echo "===> Creating Elasticsearch Paths..." \
   && mkdir -p /elasticsearch/config/scripts /elasticsearch/plugins \
   && chown -R elasticsearch:elasticsearch /elasticsearch/config /elasticsearch/plugins \
@@ -51,9 +48,9 @@ RUN cd /tmp \
   && rm /elasticsearch/config/log4j2.properties \
   && yum clean all
 
-
 RUN  mkdir -p /.backup/elasticsearch/
 COPY config /.backup/elasticsearch/config
+RUN sed -i "/###$CLOUD_PROVIDER###/,/###$CLOUD_PROVIDER###/d" /.backup/elasticsearch/config/elasticsearch.yml 
 
 VOLUME /elasticsearch/config
 VOLUME /elasticsearch/data
@@ -88,3 +85,5 @@ RUN /run/auth/certificates/gen_all.sh
 
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]
+
+

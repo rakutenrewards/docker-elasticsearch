@@ -1,0 +1,16 @@
+ARG ES_VERSION
+ARG SG_VERSION
+
+FROM es_builder:${ES_VERSION}_${SG_VERSION}
+
+
+# Install Elasticsearch GCE PART.
+RUN cd /tmp \
+  && echo "===> Install Elasticsearch GCE plugins..." \
+  && echo "===> Installing discovery-gce..." \
+  && /elasticsearch/bin/elasticsearch-plugin install -b discovery-gce \
+  && echo "===> Installing repository-gcs..." \
+  && /elasticsearch/bin/elasticsearch-plugin install -b repository-gcs \
+  && yum clean all
+
+
